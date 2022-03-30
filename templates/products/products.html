@@ -27,11 +27,11 @@
                             <div class="card h-100 border-0">
                                 
                                 {% if product.image %}
-                                <a href="">
+                                <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
-                                <a href="">
+                                <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
@@ -55,7 +55,8 @@
 
                             </div>
                         </div>
-                        
+                        <!-- Will the forloop counter not be equal to the total count of images i.e. 172 in all cases? -->
+                        <!-- i.e. How is it getting the count "per line"? -->
                         {% if forloop.counter|divisibleby:1 %}
                             <div class="col-12 d-sm-none mb-5">
                                 <hr>
@@ -79,7 +80,7 @@
                                 <hr>
                             </div>
                         {% endif %}
-                        
+
                     {% endfor %}
                 </div>
             </div>
